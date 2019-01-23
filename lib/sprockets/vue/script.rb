@@ -39,6 +39,8 @@ module Sprockets::Vue
             output << "VComponents['#{name.sub(/\.tpl$/, "")}'].template = '#{j template[:content]}';"
           end
 
+          output << "Vue.component('#{name.split('/').last}', VComponents['#{name}']);"
+
           { data: "#{wrap(output.join)}" }
         end
       end
